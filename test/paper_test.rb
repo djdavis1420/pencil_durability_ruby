@@ -16,4 +16,14 @@ class TestPaper < Minitest::Test
         @paper.write(characters)
         assert_equal characters, @paper.content
     end
+
+    def test_write__paper_appends_to_content_property_when_given_characters
+        sentence = "She sells sea shells down by the sea shore"
+        @paper.content = "She sells sea shells "
+        characters = "down by the sea shore"
+
+        @paper.write(characters)
+        
+        assert_equal sentence, @paper.content
+    end
 end

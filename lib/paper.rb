@@ -6,6 +6,6 @@ class Paper
     end
 
     def write(characters)
-        @content = characters
+        @content = @content + characters
     end
 end
