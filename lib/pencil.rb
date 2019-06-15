@@ -12,7 +12,7 @@ class Pencil
         character_list = characters.chars
         character_list.each do |character|
             paper.write(character)
-            @current_point -= 1
+            @current_point -= 1 unless (character == " " || character == "\n")
         end
     end
 

@@ -22,10 +22,10 @@ class TestPencil < Minitest::Test
         assert_equal characters, @paper.content
     end
 
-    def test_write__pencil_point_should_degrade_while_writing_characters
+    def test_write__pencil_point_should_degrade_while_writing_non_whitespace_characters
         characters = "She sells sea shells down by the sea shore"
         @pencil.write(@paper, characters)
-        assert_equal 458, @pencil.current_point
+        assert_equal 466, @pencil.current_point
         assert_equal characters, @paper.content
     end
 end
