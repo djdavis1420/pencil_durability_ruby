@@ -8,4 +8,8 @@ class Pencil
         @length = length
     end
 
+    def write(paper, characters)
+        paper.write(characters)
+    end
+
 end
