@@ -4,4 +4,8 @@ class Paper
     def initialize
         @content = ""
     end
+
+    def write(characters)
+        @content = characters
+    end
 end
