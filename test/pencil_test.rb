@@ -34,4 +34,9 @@ class TestPencil < Minitest::Test
         @pencil.sharpen
         assert_equal @pencil.original_point, @pencil.current_point
     end
+
+    def test_sharpen__pencil_length_should_decrement_when_sharpened
+        @pencil.sharpen
+        assert_equal 9, @pencil.length
+    end
 end
