@@ -9,7 +9,11 @@ class Pencil
     end
 
     def write(paper, characters)
-        paper.write(characters)
+        character_list = characters.chars
+        character_list.each do |character|
+            paper.write(character)
+            @current_point -= 1
+        end
     end
 
 end
