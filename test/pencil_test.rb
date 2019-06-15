@@ -28,4 +28,10 @@ class TestPencil < Minitest::Test
         assert_equal 466, @pencil.current_point
         assert_equal characters, @paper.content
     end
+
+    def test_sharpen__pencil_point_should_reset_to_original_value
+        @pencil.current_point = 1
+        @pencil.sharpen
+        assert_equal @pencil.original_point, @pencil.current_point
+    end
 end
