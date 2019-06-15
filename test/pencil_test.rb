@@ -39,4 +39,14 @@ class TestPencil < Minitest::Test
         @pencil.sharpen
         assert_equal 9, @pencil.length
     end
+
+    def test_sharpen__pencil_should_not_sharpen_because_length_is_zero
+        @pencil.current_point = 1
+        @pencil.length = 0
+
+        @pencil.sharpen
+
+        assert_equal 0, @pencil.length
+        assert_equal 1, @pencil.current_point
+    end
 end

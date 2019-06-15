@@ -17,8 +17,10 @@ class Pencil
     end
 
     def sharpen
-        @current_point = @original_point
-        @length -= 1
+        if @length > 0
+            @current_point = @original_point
+            @length -= 1
+        end
     end
 
 end
