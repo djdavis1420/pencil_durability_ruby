@@ -38,7 +38,7 @@ class TestPencil < Minitest::Test
         assert_equal expected_string, @paper.content
     end
 
-    def test_erase__pencil_erases_characters_from_paper
+    def test_erase__pencil_erases_characters_from_paper_and_degrades_eraser
         @paper.content = @full_string
         substring = "sea"
         expected_string = "She sells sea shells down by the     shore"
@@ -46,6 +46,7 @@ class TestPencil < Minitest::Test
         @pencil.erase(@paper, substring)
 
         assert_equal expected_string, @paper.content
+        assert_equal 97, @pencil.eraser
     end
 
     def test_sharpen__pencil_point_should_reset_to_original_value

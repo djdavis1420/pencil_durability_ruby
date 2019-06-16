@@ -22,6 +22,7 @@ class Pencil
 
     def erase(paper, substring)
         paper.erase(substring)
+        @eraser -= substring.length
     end
 
     def sharpen
