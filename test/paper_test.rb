@@ -25,4 +25,14 @@ class TestPaper < Minitest::Test
 
         assert_equal @full_string, @paper.content
     end
+
+    def test_erase__paper_should_erase_last_occurrence_of_substring
+        @paper.content = @full_string
+        substring = "sea"
+        expected_string = "She sells sea shells down by the     shore"
+
+        @paper.erase(substring)
+
+        assert_equal expected_string, @paper.content
+    end
 end
