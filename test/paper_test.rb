@@ -69,4 +69,15 @@ class TestPaper < Minitest::Test
 
         assert_equal expected_string, @paper.content
     end
+
+    def test_edit__paper_should_write_new_substring_of_longer_length_over_erased_spaces
+        @paper.content = "She sells     shells down by the sea shore"
+        new_substring = "hamburgers"
+        starting_index = 10
+        expected_string = "She sells hamb@@@@@@ down by the sea shore"
+
+        @paper.edit(new_substring, starting_index)
+
+        assert_equal expected_string, @paper.content
+    end
 end
