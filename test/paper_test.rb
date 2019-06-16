@@ -5,6 +5,7 @@ class TestPaper < Minitest::Test
 
     def setup
         @paper = Paper.new
+        @full_string = "She sells sea shells down by the sea shore"
     end
 
     def test__paper_is_instantiated_with_properties
@@ -12,18 +13,16 @@ class TestPaper < Minitest::Test
     end
 
     def test_write__paper_updates_content_property_when_given_characters
-        characters = "She sells sea shells down by the sea shore"
-        @paper.write(characters)
-        assert_equal characters, @paper.content
+        @paper.write(@full_string)
+        assert_equal @full_string, @paper.content
     end
 
     def test_write__paper_appends_to_content_property_when_given_characters
-        sentence = "She sells sea shells down by the sea shore"
         @paper.content = "She sells sea shells "
         characters = "down by the sea shore"
 
         @paper.write(characters)
-        
-        assert_equal sentence, @paper.content
+
+        assert_equal @full_string, @paper.content
     end
 end
