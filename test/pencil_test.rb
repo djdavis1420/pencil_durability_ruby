@@ -7,6 +7,7 @@ class TestPencil < Minitest::Test
     def setup
         @pencil = Pencil.new(500, 100, 10)
         @paper = Paper.new
+        @full_string = "She sells sea shells down by the sea shore"
     end
 
     def test__pencil_is_instantiated_with_properties
@@ -17,16 +18,24 @@ class TestPencil < Minitest::Test
     end
 
     def test_write__pencil_writes_characters_to_paper
-        characters = "She sells sea shells down by the sea shore"
-        @pencil.write(@paper, characters)
-        assert_equal characters, @paper.content
+        @pencil.write(@paper, @full_string)
+        assert_equal @full_string, @paper.content
     end
 
     def test_write__pencil_point_should_degrade_while_writing_non_whitespace_characters
-        characters = "She sells sea shells down by the sea shore"
-        @pencil.write(@paper, characters)
+        @pencil.write(@paper, @full_string)
         assert_equal 466, @pencil.current_point
-        assert_equal characters, @paper.content
+        assert_equal @full_string, @paper.content
+    end
+
+    def test_write__pencil_should_write_spaces_when_point_degrades_to_zero
+        @pencil.current_point = 20
+        expected_string = "She sells sea shells dow                  "
+
+        @pencil.write(@paper, @full_string)
+
+        assert_equal 0, @pencil.current_point
+        assert_equal expected_string, @paper.content
     end
 
     def test_sharpen__pencil_point_should_reset_to_original_value
@@ -48,16 +57,5 @@ class TestPencil < Minitest::Test
 
         assert_equal 0, @pencil.length
         assert_equal 1, @pencil.current_point
-    end
-
-    def test_write__pencil_should_write_spaces_when_point_degrades_to_zero
-        @pencil.current_point = 20
-        full_string = "She sells sea shells down by the sea shore"
-        expected_string = "She sells sea shells dow                  "
-
-        @pencil.write(@paper, full_string)
-
-        assert_equal 0, @pencil.current_point
-        assert_equal expected_string, @paper.content
     end
 end

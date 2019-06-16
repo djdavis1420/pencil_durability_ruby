@@ -8,9 +8,9 @@ class Pencil
         @length = length
     end
 
-    def write(paper, characters)
-        character_list = characters.chars
-        character_list.each do |character|
+    def write(paper, full_string)
+        characters = full_string.chars
+        characters.each do |character|
             if @current_point > 0
                 paper.write(character)
                 @current_point -= 1 unless (character == " " || character == "\n")
@@ -26,5 +26,4 @@ class Pencil
             @length -= 1
         end
     end
-
 end
