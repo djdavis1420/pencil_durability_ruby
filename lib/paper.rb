@@ -25,4 +25,18 @@ class Paper
 
         @content = content_list.join("")
     end
+
+    def edit(new_substring, starting_index)
+        content_list = @content.chars
+        substring_list = new_substring.chars
+
+        i = starting_index
+        substring_list.each do |character|
+            content_list[i] = character
+            i += 1
+        end
+
+        @content = content_list.join("")
+    end
+
 end
