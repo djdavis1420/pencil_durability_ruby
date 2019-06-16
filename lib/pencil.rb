@@ -37,10 +37,20 @@ class Pencil
 
     def edit(paper, new_substring, starting_index)
         paper.edit(new_substring, starting_index)
-        @current_point -= new_substring.length
+        @current_point -= value_substring(new_substring)
     end
 
     def value_character(character)
         character == character.downcase ? 1 : 2
+    end
+
+    def value_substring(substring)
+        substring_list = substring.chars
+        total = 0
+        substring_list.each do |character|
+            total += value_character(character)  \
+                unless (character == " " || character == "\n")
+        end
+        total
     end
 end

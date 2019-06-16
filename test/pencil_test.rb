@@ -113,6 +113,7 @@ class TestPencil < Minitest::Test
         @pencil.edit(@paper, new_substring, starting_index)
 
         assert_equal expected_string, @paper.content
+        assert_equal 479, @pencil.current_point
     end
 
     def test_value_character__should_return_appropriate_value_for_character_case
