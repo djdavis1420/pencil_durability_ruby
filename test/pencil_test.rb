@@ -49,6 +49,16 @@ class TestPencil < Minitest::Test
         assert_equal 97, @pencil.eraser
     end
 
+    def test_erase__pencil_erases_another_occurrence_of_characters_from_paper
+        @paper.content = "She sells sea shells down by the     shore"
+        substring = "sea"
+        expected_string = "She sells     shells down by the     shore"
+
+        @pencil.erase(@paper, substring)
+
+        assert_equal expected_string, @paper.content
+    end
+
     def test_erase__pencil_erases_characters_from_paper_only_while_eraser_remains
         @paper.content = @full_string
         @pencil.eraser = 1
