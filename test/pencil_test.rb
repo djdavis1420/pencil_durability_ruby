@@ -24,13 +24,13 @@ class TestPencil < Minitest::Test
 
     def test_write__pencil_point_should_degrade_while_writing_non_whitespace_characters
         @pencil.write(@paper, @full_string)
-        assert_equal 466, @pencil.current_point
+        assert_equal 465, @pencil.current_point
         assert_equal @full_string, @paper.content
     end
 
     def test_write__pencil_should_write_spaces_when_point_degrades_to_zero
         @pencil.current_point = 20
-        expected_string = "She sells sea shells dow                  "
+        expected_string = "She sells sea shells do                   "
 
         @pencil.write(@paper, @full_string)
 
