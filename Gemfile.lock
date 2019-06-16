@@ -1,13 +1,21 @@
 GEM
   remote: https://rubygems.org/
   specs:
+    debase (0.2.2)
+      debase-ruby_core_source (>= 0.10.2)
+    debase-ruby_core_source (0.10.5)
     minitest (5.11.3)
+    rake (12.3.2)
+    ruby-debug-ide (0.7.0)
+      rake (>= 0.8.1)
 
 PLATFORMS
   x64-mingw32
 
 DEPENDENCIES
+  debase
   minitest
+  ruby-debug-ide
 
 BUNDLED WITH
    2.0.2
