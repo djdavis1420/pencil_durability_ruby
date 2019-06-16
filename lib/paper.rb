@@ -32,7 +32,7 @@ class Paper
 
         i = starting_index
         substring_list.each do |character|
-            content_list[i] == " " \
+            content_list[i] == " " || i >= content_list.length \
                 ? content_list[i] = character \
                 : content_list[i] = "@"
             i += 1

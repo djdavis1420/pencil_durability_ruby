@@ -104,6 +104,17 @@ class TestPencil < Minitest::Test
         assert_equal 496, @pencil.current_point
     end
 
+    def test_edit__pencil_should_write_longer_text_over_erased_characters_and_degrade_point
+        @paper.content = "She sells sea shells down by the     shore"
+        new_substring = "shore of Lake Michigan"
+        starting_index = 33
+        expected_string = "She sells sea shells down by the shor@@@@@Lake Michigan"
+
+        @pencil.edit(@paper, new_substring, starting_index)
+
+        assert_equal expected_string, @paper.content
+    end
+
     def test_value_character__should_return_appropriate_value_for_character_case
         lower_case_character = "x"
         upper_case_character = "X"
