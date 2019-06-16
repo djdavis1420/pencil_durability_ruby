@@ -26,4 +26,8 @@ class Pencil
             @length -= 1
         end
     end
+
+    def value_character(character)
+        character == character.downcase ? 1 : 2
+    end
 end

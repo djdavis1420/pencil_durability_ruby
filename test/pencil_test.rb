@@ -58,4 +58,13 @@ class TestPencil < Minitest::Test
         assert_equal 0, @pencil.length
         assert_equal 1, @pencil.current_point
     end
+
+    def test_value_character__should_return_appropriate_value_for_character_case
+        lower_case_character = "x"
+        upper_case_character = "X"
+        actual_lower = @pencil.value_character(lower_case_character)
+        actual_upper = @pencil.value_character(upper_case_character)
+        assert_equal 1, actual_lower
+        assert_equal 2, actual_upper
+    end
 end
