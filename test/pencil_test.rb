@@ -49,6 +49,18 @@ class TestPencil < Minitest::Test
         assert_equal 97, @pencil.eraser
     end
 
+    def test_erase__pencil_erases_characters_from_paper_only_while_eraser_remains
+        @paper.content = @full_string
+        @pencil.eraser = 1
+        substring = "sea"
+        expected_string = "She sells sea shells down by the se  shore"
+
+        @pencil.erase(@paper, substring)
+
+        assert_equal expected_string, @paper.content
+        assert_equal 0, @pencil.eraser
+    end
+
     def test_sharpen__pencil_point_should_reset_to_original_value
         @pencil.current_point = 1
         @pencil.sharpen
