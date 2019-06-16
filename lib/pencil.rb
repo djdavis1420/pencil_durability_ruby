@@ -20,6 +20,10 @@ class Pencil
         end
     end
 
+    def erase(paper, substring)
+        paper.erase(substring)
+    end
+
     def sharpen
         if @length > 0
             @current_point = @original_point
