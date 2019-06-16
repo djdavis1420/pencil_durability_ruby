@@ -35,6 +35,11 @@ class Pencil
         end
     end
 
+    def edit(paper, new_substring, starting_index)
+        paper.edit(new_substring, starting_index)
+        @current_point -= new_substring.length
+    end
+
     def value_character(character)
         character == character.downcase ? 1 : 2
     end
