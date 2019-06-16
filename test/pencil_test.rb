@@ -49,4 +49,15 @@ class TestPencil < Minitest::Test
         assert_equal 0, @pencil.length
         assert_equal 1, @pencil.current_point
     end
+
+    def test_write__pencil_should_write_spaces_when_point_degrades_to_zero
+        @pencil.current_point = 20
+        full_string = "She sells sea shells down by the sea shore"
+        expected_string = "She sells sea shells dow                  "
+
+        @pencil.write(@paper, full_string)
+
+        assert_equal 0, @pencil.current_point
+        assert_equal expected_string, @paper.content
+    end
 end

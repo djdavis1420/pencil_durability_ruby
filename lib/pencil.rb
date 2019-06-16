@@ -11,8 +11,12 @@ class Pencil
     def write(paper, characters)
         character_list = characters.chars
         character_list.each do |character|
-            paper.write(character)
-            @current_point -= 1 unless (character == " " || character == "\n")
+            if @current_point > 0
+                paper.write(character)
+                @current_point -= 1 unless (character == " " || character == "\n")
+            else
+                paper.write(" ")
+            end
         end
     end
 
