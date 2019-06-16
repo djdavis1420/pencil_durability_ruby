@@ -26,12 +26,24 @@ class TestPaper < Minitest::Test
         assert_equal @full_string, @paper.content
     end
 
-    def test_erase__paper_should_erase_last_occurrence_of_substring
+    def test_erase__paper_should_erase_last_occurrence_of_substring_in_full_with_full_eraser
         @paper.content = @full_string
+        eraser = 100
         substring = "sea"
         expected_string = "She sells sea shells down by the     shore"
 
-        @paper.erase(substring)
+        @paper.erase(substring, eraser)
+
+        assert_equal expected_string, @paper.content
+    end
+
+    def test_erase__paper_should_erase_last_occurrence_of_substring_in_part_due_to_eraser_degradation
+        @paper.content = @full_string
+        eraser = 2
+        substring = "sea"
+        expected_string = "She sells sea shells down by the s   shore"
+
+        @paper.erase(substring, eraser)
 
         assert_equal expected_string, @paper.content
     end

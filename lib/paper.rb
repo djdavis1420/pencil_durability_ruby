@@ -9,16 +9,18 @@ class Paper
         @content = @content + characters
     end
 
-    def erase(substring)
+    def erase(substring, eraser)
         substring_length = substring.length
         beginning_index = @content.rindex(substring)
         ending_index = beginning_index + substring_length - 1
         content_list = @content.chars
 
-        i = beginning_index
-        while i <= ending_index
+        i = ending_index
+        e = eraser
+        while e > 0 && i >= beginning_index
             content_list[i] = " "
-            i += 1
+            i -= 1
+            e -= 1
         end
 
         @content = content_list.join("")
